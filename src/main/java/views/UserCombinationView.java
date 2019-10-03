@@ -16,6 +16,20 @@ public class UserCombinationView {
         this.resultView=new ResultView(this.userCombinationController);
     }
 
+    public boolean act(){
+        boolean end = false;
+        boolean win = false;
+
+        userCombinationController.addUserCombination(readCombinatiion());
+        new ResultView(userCombinationController).printResultMessage();
+        win=userCombinationController.isWinner();
+        if(win){
+            end=true;
+        }else{
+            end = userCombinationController.isFinished();
+        }
+        return end;
+    }
     public UserCombination readCombinatiion() {
         Scanner scanner = new Scanner(System.in);
         String userCombinationString;
@@ -23,8 +37,10 @@ public class UserCombinationView {
             System.out.println("Type your Combination. 4 colors (R, B, Y, G, O, P):");
             userCombinationString=scanner.next();
         }while(!checkUserEntry(userCombinationString));
+
         return new UserCombination(userCombinationString);
     }
+
 
     public  boolean checkUserEntry(String userEntry) {
         if(userEntry.length()!=4) {

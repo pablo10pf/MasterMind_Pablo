@@ -2,6 +2,7 @@ package views;
 
 import controllers.RestartController;
 import controllers.StartController;
+import controllers.UserCombinationController;
 import models.Game;
 import models.UserCombination;
 
@@ -11,13 +12,17 @@ public class GameView {
     protected Game game;
     private StartView startView;
     private RestartView restartView;
+    private UserCombinationView userCombinationView;
+    private ResultView resultView;
 
     /*public GameView(Game game) {
         this.game = game;
     }*/
-    public GameView(StartController startController, RestartController restartController){
+    public GameView(StartController startController, RestartController restartController, UserCombinationController
+                    userCombinationController){
         this.startView=new StartView(startController);
         this.restartView=new RestartView(restartController);
+        //this.userCombinationView= new UserCombinationView(userCombinationController);
     }
 
    /* public void act() {
@@ -55,6 +60,7 @@ public class GameView {
            do{
                end= typeUserCombination();
            }while(!end);
+
            restart=this.restart();
        }while(!restart);
    }
@@ -62,9 +68,10 @@ public class GameView {
         this.startView.act();
     }
 
-    //TODO comprobar user combination
+    //TODO comprobar user combination: no implemetado
+
     private boolean typeUserCombination(){
-        return true;
+        return this.userCombinationView.act();
     }
 
     private boolean restart(){
