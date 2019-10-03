@@ -18,7 +18,7 @@ public class Game {
         this.results= new ArrayList<Result>();
     }
 
-    public void addProposedCombination(UserCombination userCombination) {
+    public void addUserCombination(UserCombination userCombination) {
         this.userCombinations.add(userCombination);
         this.results.add(this.secretCombination.calculateResult(userCombination));
     }
@@ -29,6 +29,12 @@ public class Game {
 
     public boolean isFinished(){
         return results.size()==MAX_CHANCES;
+    }
+
+    public void restartComponents(){
+        this.secretCombination = new SecretCombination();
+        this.userCombinations = new ArrayList<UserCombination>();
+        this.results = new ArrayList<Result>();
     }
 
     public ArrayList<Result> getResults() {

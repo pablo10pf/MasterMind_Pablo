@@ -1,5 +1,6 @@
 package views;
 
+import controllers.UserCombinationController;
 import models.Color;
 import models.Combination;
 import models.UserCombination;
@@ -7,6 +8,14 @@ import models.UserCombination;
 import java.util.Scanner;
 
 public class UserCombinationView {
+
+    UserCombinationController userCombinationController;
+    ResultView resultView;
+    public UserCombinationView(UserCombinationController userCombinationController, ResultView resultView){
+        this.userCombinationController=userCombinationController;
+        this.resultView=new ResultView(this.userCombinationController);
+    }
+
     public UserCombination readCombinatiion() {
         Scanner scanner = new Scanner(System.in);
         String userCombinationString;
