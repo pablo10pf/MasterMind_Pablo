@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 public class UserCombination extends Combination {
 
-    final static int LONGITUD_CODIGO = 4;
-
     public UserCombination(String userCombination) {
         super();
         for (int i = 0; i < userCombination.length(); i++) {
@@ -50,12 +48,4 @@ public class UserCombination extends Combination {
         return colors;
     }
 
-    /*public void askCombination() {
-        String user_entry;
-        Scanner scanner = new Scanner(System.in);
-        do {
-            System.out.println("Type your combination");
-            user_entry= scanner.nextLine().toString();
-        }while(!checkUserEntry(user_entry));
-    }*/
 }

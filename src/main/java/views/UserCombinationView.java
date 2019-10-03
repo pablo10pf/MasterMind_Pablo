@@ -1,6 +1,7 @@
 package views;
 
 import models.Color;
+import models.Combination;
 import models.UserCombination;
 
 import java.util.Scanner;
@@ -21,32 +22,35 @@ public class UserCombinationView {
             System.out.println("Error. Type only 4 letters.");
             return false;
         }
-        else  if(!checkValidLetters(userEntry)) {
-            System.out.println("Error. Colors (R, B, Y, G, O, P).");
-            return false;
-        }
         else if(!checkRepeatedLetters(userEntry)) {
             System.out.println("Error. Don´t repeat colors.");
             return false;
         }
+        else  if(!checkValidLetters(userEntry)) {
+            System.out.println("Error. Colors (R, B, Y, G, O, P).");
+            return false;
+        }
+
         else return true;
     }
 
-    //revisar comparacion
     public  boolean checkValidLetters(String userEntry) {
+        int validLetters=0;
         for (int i = 0; i <UserCombination.getCombinationLength(); i++) {
             for (Color color : Color.values()) {
-                System.out.println("+++++++ "+color.name());
-                System.out.println("------- "+String.valueOf(userEntry.charAt(i)));
-                if (color.name()!=String.valueOf(userEntry.charAt(i))) {
-                    return false;
+                System.out.println("+++++++ "+color.name()+"---");
+                System.out.println("------- "+String.valueOf(userEntry.charAt(i))+"---");
+                if (color.name().equals(String.valueOf(userEntry.charAt(i)))) {
+                    validLetters++;
+                    System.out.println("validas: "+validLetters);
                 }
             }
-            /*if(!DIGITOS.contains(String.valueOf(entrada.charAt(i)))) {
-                return false;
-            }*/
         }
-        return true;
+        if(validLetters==Combination.getCombinationLength()){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     public  boolean checkRepeatedLetters(String userEntry) {

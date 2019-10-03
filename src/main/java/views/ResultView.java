@@ -11,8 +11,10 @@ public class ResultView {
     }
 
     public void printResultMessage() {
+        int chance=1;
         for(Result result : results) {
-            System.out.println(result.toString());
+            System.out.println("Chance "+chance+": "+result.toString());
+            chance++;
         }
     }
 }

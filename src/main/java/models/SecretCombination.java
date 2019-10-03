@@ -20,12 +20,7 @@ public class SecretCombination extends Combination {
                 wounded++;
             }
         }
-        /*for (Color color : this.colors) {
-            if (userCombination.contains(color)) {
-                wounded++;
-            }
-        }*/
-        return new Result(userCombination, dead, wounded - dead);
+        return new Result(userCombination, dead, wounded);
     }
 
     public void createSecretCombination() {
@@ -37,19 +32,6 @@ public class SecretCombination extends Combination {
             this.colors.remove(random.nextInt(colors.size()));
         }
         Collections.shuffle(colors, random);
+        System.out.println(toString());
     }
-
-    /*public int[] generate(boolean repeated, int limit, int length) {
-        assert (repeated || (limit >= length));
-        Random random = new Random(System.currentTimeMillis());
-        int[] array = new int[length];
-        for (int i = 0; i < length; i++) {
-            int next;
-            do {
-                next = random.nextInt(limit);
-            } while (!repeated && ArrayUtils.contains(Arrays.copyOfRange(array, 0, i), next));
-            array[i] = next;
-        }
-        return array;
-    }*/
 }

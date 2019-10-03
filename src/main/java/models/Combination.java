@@ -17,5 +17,11 @@ public class Combination {
         return colors;
     }
 
-
+    public String toString(){
+        String code="";
+        for(Color c : colors){
+            code+=c.name();
+        }
+        return code;
+    }
 }
